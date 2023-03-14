@@ -6,6 +6,7 @@ services:
       - './data/db:/data/db'
     ports:
       - 27017:27017
+    restart: always
   parse:
     image: 'parseplatform/parse-server:latest'
     environment:
@@ -30,7 +31,6 @@ services:
       - PARSE_DASHBOARD_APP_NAME=StreamingApp
       - PARSE_DASHBOARD_USER_ID=admin
       - PARSE_DASHBOARD_USER_PASSWORD=password123.
-      - PARSE_DASHBOARD_ALLOW_INSECURE_HTTP=1
       - MOUNT_PATH=/dashboard/
     links:
       - parse
