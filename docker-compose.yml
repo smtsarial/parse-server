@@ -9,8 +9,9 @@ services:
   parse:
     image: 'parseplatform/parse-server:latest'
     environment:
-      - PARSE_SERVER_APPLICATION_ID=parse
-      - PARSE_SERVER_MASTER_KEY=parse@master123!
+      - PARSE_SERVER_APPLICATION_ID=cBrnstkFrv7OtffgtmeLeOwUli2wG1leq2twftgT
+      - PARSE_SERVER_MASTER_KEY=G53GjYaepDZIQMgYZNrelS5Nwn0hAUdXDxO7Ipbk
+      - PARSE_SERVER_MASTER_KEY_IP_RESTRICTION=*
       - PARSE_SERVER_DATABASE_URI=mongodb://mongo:27017/parse
       - PARSE_SERVER_MOUNT_PATH=/parse
     ports:
@@ -24,11 +25,12 @@ services:
     environment:
       - PARSE_DASHBOARD_ALLOW_INSECURE_HTTP=true
       - PARSE_DASHBOARD_SERVER_URL=/api
-      - PARSE_DASHBOARD_MASTER_KEY=parse@master123!
-      - PARSE_DASHBOARD_APP_ID=parse
-      - PARSE_DASHBOARD_APP_NAME=MyParseApp
+      - PARSE_DASHBOARD_MASTER_KEY=G53GjYaepDZIQMgYZNrelS5Nwn0hAUdXDxO7Ipb213k
+      - PARSE_DASHBOARD_APP_ID=cBrnstkFrv7OtffgtmeLeOwUli2wG1leq2twftg123123123T
+      - PARSE_DASHBOARD_APP_NAME=StreamingApp
       - PARSE_DASHBOARD_USER_ID=admin
-      - PARSE_DASHBOARD_USER_PASSWORD=pwd@admin123!
+      - PARSE_DASHBOARD_USER_PASSWORD=password123.
+      - PARSE_DASHBOARD_ALLOW_INSECURE_HTTP=1
       - MOUNT_PATH=/dashboard/
     links:
       - parse
@@ -43,8 +45,8 @@ services:
   nginx:
     image: 'nginx:latest'
     ports:
-      - '54.144.138.203:80:80'
-      - '54.144.138.203:443:443'
+      - '80:80'
+      - '443:443'
     volumes:
       - './nginx:/etc/nginx/sites-enabled'
       - './nginx/default.conf:/etc/nginx/conf.d/default.conf'
